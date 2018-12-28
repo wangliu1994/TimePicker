@@ -12,12 +12,6 @@ public class TimePickerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-    }
-
-    public void pickTime(View view) {
-    }
-
-    public void pickDate(View view) {
+        setContentView(R.layout.activity_time_picker);
     }
 }

@@ -13,14 +13,32 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="pickTime"
+            android:text="选择时间" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:onClick="pickDate"
             android:text="选择日期" />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="pickTime"
-            android:text="选择时间" />
+            android:onClick="pickDate1"
+            android:text="选择时间1" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="pickDateDialog"
+            android:text="选择日期弹窗" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="pickTimeDialog"
+            android:text="选择时间弹窗" />
     </LinearLayout>
 
 

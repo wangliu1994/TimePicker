@@ -3,12 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <DatePicker
+    <CalendarView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:datePickerMode="spinner"
-        style="@android:style/Widget.DatePicker"/>
+        android:layout_height="wrap_content" />
 </LinearLayout>
