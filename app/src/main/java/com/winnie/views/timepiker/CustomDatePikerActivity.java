@@ -75,7 +75,6 @@ public class CustomDatePikerActivity extends AppCompatActivity {
         mCalendarView.addDecorators(
                 new SelectorDecorator(this),
                 new RedWeekendsDecorator());
-        mCalendarView.setSelectedDate(LocalDate.now().minusMonths(2));
         mCalendarView.setOnDateChangedListener((materialCalendarView, calendarDay, selected)
                 -> onTimeChanged(calendarDay));
 
