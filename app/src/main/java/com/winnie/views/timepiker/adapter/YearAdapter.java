@@ -23,7 +23,7 @@ public class YearAdapter extends BaseAdapter {
     public YearAdapter(Context context, int minYear, int maxYear) {
         mContext = context;
         mMinYear = minYear;
-        mCount = maxYear - minYear;
+        mCount = maxYear - minYear + 1;
     }
 
     @Override
