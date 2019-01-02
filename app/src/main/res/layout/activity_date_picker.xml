@@ -1,14 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <DatePicker
+    <View
+        android:id="@+id/banner_view"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:background="#5cc4f3" />
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:datePickerMode="spinner"
-        style="@android:style/Widget.DatePicker"/>
-</LinearLayout>
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="10dp">
+
+            <TextView
+                android:id="@+id/tv_year"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#ffffff"
+                android:textSize="25dp"
+                android:text="1"/>
+
+            <TextView
+                android:id="@+id/tv_month_and_day"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:layout_toStartOf="@id/tv_weekday"
+                android:textColor="#ffffff"
+                android:textSize="20dp"
+                tools:ignore="RelativeOverlap"
+                android:text="2"/>
+
+            <TextView
+                android:id="@+id/tv_weekday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:textColor="#ffffff"
+                android:textSize="20dp"
+                android:text="3"/>
+        </RelativeLayout>
+
+        <DatePicker
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:datePickerMode="spinner"
+            style="@android:style/Widget.DatePicker"
+            android:visibility="gone"/>
+
+        <DatePicker
+            android:id="@+id/date_picker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:dayOfWeekTextAppearance="@color/colorPrimary"
+            android:spinnersShown="false" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="#5cc4f3"
+        android:text="确定"
+        android:textColor="#ffffff"
+        android:textSize="18dp" />
+</FrameLayout>
