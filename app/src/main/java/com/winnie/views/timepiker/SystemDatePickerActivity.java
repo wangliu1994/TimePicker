@@ -18,7 +18,7 @@ import java.util.Locale;
 /**
  * @author winnie
  */
-public class DatePickerActivity extends AppCompatActivity {
+public class SystemDatePickerActivity extends AppCompatActivity {
 
     TextView mTvYear;
 
@@ -33,7 +33,7 @@ public class DatePickerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_date_picker);
+        setContentView(R.layout.activity_system_date_picker);
         initData();
         initView();
     }

@@ -19,14 +19,20 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="pickDate"
-            android:text="选择日期" />
+            android:onClick="pickSystemDate"
+            android:text="选择系统日期" />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="pickDate1"
-            android:text="选择时间1" />
+            android:onClick="pickCalendarDate"
+            android:text="选择日历日期" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="pickCustomDate"
+            android:text="选择自定义日期" />
 
         <Button
             android:layout_width="match_parent"

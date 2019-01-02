@@ -18,9 +18,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".DatePickerActivity" />
+        <activity android:name=".SystemDatePickerActivity" />
         <activity android:name=".TimePickerActivity" />
-        <activity android:name=".DatePickerActivity1" />
+        <activity android:name=".CalendarDatePickerActivity" />
+        <activity android:name=".CustomDatePikerActivity" />
     </application>
 
 </manifest>

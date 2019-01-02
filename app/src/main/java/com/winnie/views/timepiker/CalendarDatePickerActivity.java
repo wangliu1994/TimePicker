@@ -1,17 +1,15 @@
 package com.winnie.views.timepiker;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.CalendarView;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.winnie.views.timepiker.adapter.YearAdapter;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -21,24 +19,24 @@ import java.util.Locale;
 /**
  * @author winnie
  */
-public class DatePickerActivity1 extends AppCompatActivity {
+public class CalendarDatePickerActivity extends AppCompatActivity {
     TextView mTvYear;
 
     TextView mTvMonthAndDay;
 
     TextView mTvWeekday;
 
-    CalendarView mCalenderView;
+    CalendarView mCalendarView;
 
     ListView mListView;
 
-    private  YearAdapter mAdapter;
+    private YearAdapter mAdapter;
     private long currentTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_date_picker1);
+        setContentView(R.layout.activity_calendar_date_picker);
         initData();
         initView();
     }
@@ -64,14 +62,14 @@ public class DatePickerActivity1 extends AppCompatActivity {
         mTvWeekday = findViewById(R.id.tv_weekday);
         mTvWeekday.setOnClickListener(v -> changeDayMode());
 
-        mCalenderView = findViewById(R.id.calender_view);
-        mCalenderView.setOnDateChangeListener((view, year, month, dayOfMonth)
+        mCalendarView = findViewById(R.id.calender_view);
+        mCalendarView.setOnDateChangeListener((view, year, month, dayOfMonth)
                 -> onTimeChanged(year, month + 1, dayOfMonth));
 
         if (currentTime == 0) {
             currentTime = System.currentTimeMillis();
         }
-        mCalenderView.setDate(currentTime);
+        mCalendarView.setDate(currentTime);
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(currentTime);
         onTimeChanged(calendar);
@@ -84,7 +82,7 @@ public class DatePickerActivity1 extends AppCompatActivity {
             calendar.setTimeInMillis(currentTime);
             calendar.set(Calendar.YEAR, year);
             currentTime = calendar.getTimeInMillis();
-            mCalenderView.setDate(currentTime, false, false);
+            mCalendarView.setDate(currentTime, false, false);
             onTimeChanged(calendar);
             changeDayMode();
         });
@@ -146,14 +144,15 @@ public class DatePickerActivity1 extends AppCompatActivity {
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(currentTime);
         int year = calendar.get(Calendar.YEAR);
-        mAdapter.setSelectedYear(year);
+        int position = mAdapter.setSelectedYear(year);
+        mListView.setSelection(position - 3);
         mListView.setVisibility(View.VISIBLE);
-        mCalenderView.setVisibility(View.GONE);
+        mCalendarView.setVisibility(View.GONE);
     }
 
     private void changeDayMode(){
         mListView.setVisibility(View.GONE);
-        mCalenderView.setVisibility(View.VISIBLE);
+        mCalendarView.setVisibility(View.VISIBLE);
     }
 
     private long parseFromDay(String time) {
@@ -162,64 +161,6 @@ public class DatePickerActivity1 extends AppCompatActivity {
             return format.parse(time).getTime();
         } catch (ParseException e) {
             return 0;
-        }
-    }
-
-    private class YearAdapter extends BaseAdapter{
-        private int mMinYear;
-        private int mCount;
-        private int mSelectedYear;
-        private Context mContext;
-
-        public YearAdapter(Context context, int minYear, int maxYear) {
-            mContext = context;
-            mMinYear = minYear;
-            mCount = maxYear - minYear;
-        }
-
-        @Override
-        public int getCount() {
-            return mCount;
-        }
-
-        @Override
-        public Integer getItem(int position) {
-            return getYearForPosition(position);
-        }
-
-        @Override
-        public long getItemId(int position) {
-            return getPositionForYear(position);
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            if(convertView == null){
-                convertView = LayoutInflater.from(mContext).inflate(R.layout.layout_year_item, parent, false);
-            }
-            int year = getYearForPosition(position);
-            TextView textView = convertView.findViewById(R.id.year_text);
-            textView.setText(String.valueOf(year));
-            if(mSelectedYear == year){
-                textView.setTextColor(mContext.getResources().getColor(R.color.colorAccent));
-            }else {
-                textView.setTextColor(mContext.getResources().getColor(R.color.textPrimary));
-            }
-            return convertView;
-        }
-
-        public int getPositionForYear(int year) {
-            return year - mMinYear;
-        }
-
-        public int getYearForPosition(int position) {
-            return mMinYear + position;
-        }
-
-        public void setSelectedYear(int year) {
-            mSelectedYear = year;
-            mListView.setSelection(getPositionForYear(year) - 3);
-            notifyDataSetChanged();
         }
     }
 }
