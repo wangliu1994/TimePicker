@@ -11,5 +11,5 @@
         android:padding="10dp"
         android:text="1990"
         android:textColor="#666666"
-        android:textSize="16dp" />
+        android:textSize="18dp" />
 </LinearLayout>

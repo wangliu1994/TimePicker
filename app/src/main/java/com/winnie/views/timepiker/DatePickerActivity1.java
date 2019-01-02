@@ -218,7 +218,7 @@ public class DatePickerActivity1 extends AppCompatActivity {
 
         public void setSelectedYear(int year) {
             mSelectedYear = year;
-            mListView.setSelection(getPositionForYear(year));
+            mListView.setSelection(getPositionForYear(year) - 3);
             notifyDataSetChanged();
         }
     }
