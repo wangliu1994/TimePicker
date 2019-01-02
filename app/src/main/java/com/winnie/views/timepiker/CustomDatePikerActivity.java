@@ -76,9 +76,8 @@ public class CustomDatePikerActivity extends AppCompatActivity {
                 new SelectorDecorator(this),
                 new RedWeekendsDecorator());
         mCalendarView.setSelectedDate(LocalDate.now().minusMonths(2));
-        mCalendarView.setOnDateChangedListener((materialCalendarView, calendarDay, selected) -> {
-            onTimeChanged(calendarDay);
-        });
+        mCalendarView.setOnDateChangedListener((materialCalendarView, calendarDay, selected)
+                -> onTimeChanged(calendarDay));
 
         if (mCurrentTime == 0) {
             mCurrentTime = System.currentTimeMillis();
@@ -110,7 +109,7 @@ public class CustomDatePikerActivity extends AppCompatActivity {
 
     private void onTimeChanged(CalendarDay calendarDay) {
         int year = calendarDay.getYear();
-        int month = calendarDay.getMonth() + 1;
+        int month = calendarDay.getMonth();
         int dayOfMonth = calendarDay.getDay();
         String timeString = year + "-" + month + "-" + dayOfMonth;
         mCurrentTime = parseFromDay(timeString);
